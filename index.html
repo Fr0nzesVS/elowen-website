@@ -7,6 +7,7 @@
   <title>Мой первый сайт</title>
   <style>
     :root {
+      scroll-behavior: smooth;
       color-scheme: dark;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #0b0c10;
@@ -20,9 +21,6 @@
     body {
       min-height: 100vh;
       margin: 0;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
       background:
         radial-gradient(ellipse at 50% 42%, rgba(115, 87, 255, 0.15), transparent 42%),
         radial-gradient(ellipse at 82% 18%, rgba(70, 207, 188, 0.08), transparent 34%),
@@ -30,9 +28,29 @@
     }
 
     main {
+      min-height: 100vh;
       width: min(100% - 3rem, 760px);
       padding: 5rem 2rem;
+      margin: 0 auto;
+      display: grid;
+      align-content: center;
+      justify-items: center;
       text-align: center;
+    }
+
+    .next-section {
+      min-height: 100vh;
+      padding: 5rem 1.5rem;
+      display: grid;
+      place-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(ellipse at 50% 50%, rgba(105, 224, 197, 0.08), transparent 55%);
+      text-align: center;
+      scroll-margin-top: 1rem;
+    }
+
+    .section-content {
+      width: min(100%, 680px);
     }
 
     .eyebrow {
@@ -68,6 +86,14 @@
       color: #a99aff;
     }
 
+    h2 {
+      margin: 0;
+      font-size: clamp(2.5rem, 9vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.065em;
+      line-height: 1.05;
+    }
+
     .intro {
       margin: 1.8rem 0 2.2rem;
       color: #a5a4af;
@@ -90,6 +116,7 @@
       font-weight: 650;
       text-decoration: none;
       transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      cursor: pointer;
     }
 
     .button:hover {
@@ -113,6 +140,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      :root {
+        scroll-behavior: auto;
+      }
+
       *,
       *::before,
       *::after {
@@ -123,13 +154,21 @@
   </style>
 </head>
 <body>
-  <main>
+  <main id="top">
     <p class="eyebrow">Мой первый сайт</p>
     <h1>Hello<span>!</span></h1>
     <p class="intro">Привет! 👋<br>Это мой первый сайт — и это только начало.</p>
-    <button class="button" type="button">
+    <a class="button" href="#next">
       Давайте начнём <span aria-hidden="true">↗</span>
-    </button>
+    </a>
   </main>
+  <section class="next-section" id="next" aria-labelledby="next-title">
+    <div class="section-content">
+      <p class="eyebrow">Шаг 02</p>
+      <h2 id="next-title">А теперь — дальше.</h2>
+      <p class="intro">Это следующая часть моего сайта. Здесь начинается что-то новое!</p>
+      <a class="button" href="#top">На главную <span aria-hidden="true">↑</span></a>
+    </div>
+  </section>
 </body>
 </html>
